@@ -4,7 +4,6 @@ class ProductModel {
   String? productName;
   String? price;
   String? productDetails;
-  dynamic forCondition;
   String? productImage;
 
   ProductModel({
@@ -13,7 +12,6 @@ class ProductModel {
     this.productName,
     this.price,
     this.productDetails,
-    this.forCondition,
     this.productImage,
   });
 
@@ -25,7 +23,6 @@ class ProductModel {
     productName: json['product_name'] as String?,
     price: json['price'] as String?,
     productDetails: json['product_details'] as String?,
-    forCondition: json['for_condition'] as dynamic,
     productImage: json['product_image'] as String?,
   );
 
@@ -35,7 +32,6 @@ class ProductModel {
     'product_name': productName,
     'price': price,
     'product_details': productDetails,
-    'for_condition': forCondition,
     'product_image': productImage,
   };
 }
