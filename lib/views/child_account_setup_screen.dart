@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:graduation/widgets/text_field.dart';
+import 'package:graduation/core/widgets/text_field.dart';
 import 'kidguardhomescreen.dart';
 
 class ChildAccountSetupScreen extends StatelessWidget {

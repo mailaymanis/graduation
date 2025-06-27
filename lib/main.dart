@@ -1,7 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:graduation/core/helper/supabase_keys.dart';
 import 'package:graduation/views/welcome_screen.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Supabase.initialize(
+    url: SupabaseKeys.url,
+    anonKey: SupabaseKeys.anonKey,
+  );
   runApp(const MyApp());
 }
 

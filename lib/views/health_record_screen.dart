@@ -1,6 +1,6 @@
 import 'dart:developer';
 import 'package:flutter/material.dart';
-import 'package:graduation/widgets/text_field.dart';
+import 'package:graduation/core/widgets/text_field.dart';
 
 class HealthRecordScreen extends StatelessWidget {
   const HealthRecordScreen({super.key});
