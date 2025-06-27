@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:graduation/core/widgets/text_field.dart';
-import 'kidguardhomescreen.dart';
+import '../home/ui/kidguardhomescreen.dart';
 
 class ChildAccountSetupScreen extends StatelessWidget {
   const ChildAccountSetupScreen({super.key, required String userType});

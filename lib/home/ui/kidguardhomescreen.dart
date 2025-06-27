@@ -1,11 +1,11 @@
 import 'package:animations/animations.dart';
 import 'package:flutter/material.dart';
-import 'health_record_screen.dart';
-import 'notifications_screen.dart';
-import 'welcome_screen.dart';
-import 'location_screen.dart';
-import 'ProductSelectionPage.dart';
-import 'budget_setting_screen.dart';
+import '../../views/health_record_screen.dart';
+import '../../views/notifications_screen.dart';
+import '../../views/welcome_screen.dart';
+import '../../views/location_screen.dart';
+import '../../views/ProductSelectionPage.dart';
+import '../../views/budget_setting_screen.dart';
 
 class KidGuardHomeScreen extends StatelessWidget {
   const KidGuardHomeScreen({super.key});

@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:graduation/views/auth/logic/auth_cubit.dart';
 import 'package:graduation/views/auth/logic/auth_states.dart';
-import 'package:graduation/views/kidguardhomescreen.dart';
+import 'package:graduation/home/ui/kidguardhomescreen.dart';
 import 'signup_screen.dart';
 
 class LoginScreen extends StatefulWidget {
