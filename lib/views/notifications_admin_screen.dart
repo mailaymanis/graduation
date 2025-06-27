@@ -61,9 +61,13 @@ class NotificationsScreen extends StatelessWidget {
           BottomNavigationBarItem(icon: Icon(Icons.money), label: "Budget"),
           BottomNavigationBarItem(icon: Icon(Icons.people), label: "Users"),
           BottomNavigationBarItem(
-              icon: Icon(Icons.notifications), label: "Notifications"),
+            icon: Icon(Icons.notifications),
+            label: "Notifications",
+          ),
           BottomNavigationBarItem(
-              icon: Icon(Icons.exit_to_app), label: "Log out"),
+            icon: Icon(Icons.exit_to_app),
+            label: "Log out",
+          ),
         ],
         onTap: (index) {
           if (index == 0) {
