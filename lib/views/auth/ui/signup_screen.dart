@@ -98,6 +98,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     SizedBox(height: MediaQuery.of(context).size.height * 0.01),
                     TextFormField(
                       decoration: _inputDecoration("Enter your full name"),
+                      controller: _nameController,
                       validator: (value) {
                         if (value == null || value.isEmpty) {
                           return "Please enter your name";
@@ -116,6 +117,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     TextFormField(
                       decoration: _inputDecoration("Enter your email"),
                       keyboardType: TextInputType.emailAddress,
+                      controller: _emailController,
                       validator: (value) {
                         if (value == null || value.isEmpty) {
                           return "Please enter your email";
@@ -133,6 +135,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     TextFormField(
                       decoration: _inputDecoration("Enter your phone number"),
                       keyboardType: TextInputType.phone,
+                      controller: _phoneController,
                       validator: (value) {
                         if (value == null || value.isEmpty) {
                           return "Please enter your phone number";
@@ -162,6 +165,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             ),
                           ),
                       obscureText: !_isPasswordVisible,
+                      controller: _passwordController,
                       validator: (value) {
                         if (value == null || value.length < 6) {
                           return "Password must be at least 6 characters";
