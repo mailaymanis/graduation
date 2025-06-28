@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 
-class buildTextField extends StatelessWidget {
-  const buildTextField({super.key, required this.label});
+class BuildTextField extends StatelessWidget {
+  const BuildTextField({super.key, required this.label, this.controller});
   final String label;
+  final TextEditingController? controller;
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +17,8 @@ class buildTextField extends StatelessWidget {
             style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
           ),
           const SizedBox(height: 5),
-          TextField(
+          TextFormField(
+            controller: controller,
             decoration: InputDecoration(
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(8),

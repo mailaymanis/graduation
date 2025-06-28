@@ -22,3 +22,33 @@ final class LoginErrorState extends AuthStates {
   final String message;
   LoginErrorState({required this.message});
 }
+
+//create child account setup states
+final class ChildAccountSetupLoadingState extends AuthStates {}
+
+final class ChildAccountSetupSuccessState extends AuthStates {}
+
+final class ChildAccountSetupErrorState extends AuthStates {
+  final String message;
+  ChildAccountSetupErrorState({required this.message});
+}
+
+//create add parent data states
+final class AddParentDataLoadingState extends AuthStates {}
+
+final class AddParentDataSuccessState extends AuthStates {}
+
+final class AddParentDataErrorState extends AuthStates {
+  final String message;
+  AddParentDataErrorState({required this.message});
+}
+
+//create add child data states
+final class AddChildDataLoadingState extends AuthStates {}
+
+final class AddChildDataSuccessState extends AuthStates {}
+
+final class AddChildDataErrorState extends AuthStates {
+  final String message;
+  AddChildDataErrorState({required this.message});
+}

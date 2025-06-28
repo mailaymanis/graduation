@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:graduation/views/auth/logic/auth_cubit.dart';
 import 'package:graduation/views/auth/logic/auth_states.dart';
 import 'package:graduation/views/auth/ui/login_screen.dart';
+import 'package:graduation/views/child_account_setup_screen.dart';
 
 class SignUpScreen extends StatefulWidget {
   final String userType;
@@ -40,7 +41,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
             Navigator.pushReplacement(
               context,
               MaterialPageRoute(
-                builder: (context) => LoginScreen(userType: widget.userType),
+                builder: (context) =>
+                    ChildAccountSetupScreen(userType: widget.userType),
               ),
             );
           }

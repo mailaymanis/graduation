@@ -30,7 +30,7 @@ class HealthRecordScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const SizedBox(height: 10),
-            buildTextField(label: "Medical Name"),
+            BuildTextField(label: "Medical Name"),
             const Text(
               "Upload your child's medical file",
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
