@@ -1,5 +1,6 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
+import 'package:graduation/views/auth/ui/vendor_login_screen.dart';
 import 'auth/ui/login_screen.dart';
 
 class WelcomeScreen extends StatelessWidget {
@@ -108,7 +109,7 @@ class WelcomeScreen extends StatelessWidget {
                       context,
                       PageRouteBuilder(
                         pageBuilder: (context, animation, secondaryAnimation) =>
-                            const LoginScreen(userType: 'Vendor'),
+                            const VendorLoginScreen(userType: 'Vendor'),
                         transitionsBuilder:
                             (context, animation, secondaryAnimation, child) {
                               return FadeTransition(

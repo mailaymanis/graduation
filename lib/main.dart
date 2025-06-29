@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:graduation/core/helper/supabase_keys.dart';
-import 'package:graduation/home/ui/kidguardhomescreen.dart';
+import 'package:graduation/views/home/ui/kidguardhomescreen.dart';
 import 'package:graduation/views/welcome_screen.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 

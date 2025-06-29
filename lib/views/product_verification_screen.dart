@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 import 'welcome_screen.dart';
 
 class ProductVerificationScreen extends StatefulWidget {
@@ -17,6 +18,7 @@ class _ProductVerificationScreenState extends State<ProductVerificationScreen> {
   final Logger _logger = Logger(); // إضافة Logger
 
   String _feedbackMessage = "";
+
   Color _feedbackColor = Colors.transparent;
 
   IconData _feedbackIcon = Icons.info_outline;
@@ -68,18 +70,19 @@ class _ProductVerificationScreenState extends State<ProductVerificationScreen> {
     _logger.i("Loaded products: $_allProducts"); // استخدام Logger بدل print
   }
 
-  void _checkPermission() {
-    String childId = _childIdController.text.trim();
-    String productName = _productNameController.text.trim();
+  Future<bool> _studentCodeExists(String studentCode) async {
+    final response = await Supabase.instance.client
+        .from('students')
+        .select('student_code')
+        .eq('student_code', studentCode)
+        .maybeSingle();
 
-    if (childId.length != 6 || !RegExp(r'^\d{6}$').hasMatch(childId)) {
-      _updateFeedback(
-        "Please enter a valid 6-digit child ID.",
-        Colors.red,
-        Icons.cancel,
-      );
-      return;
-    }
+    return response != null;
+  }
+
+  void _checkPermission() async {
+    String studentCode = _childIdController.text.trim();
+    String productName = _productNameController.text.trim();
 
     if (productName.isEmpty) {
       _updateFeedback("Please enter a product name.", Colors.red, Icons.cancel);
@@ -115,7 +118,38 @@ class _ProductVerificationScreenState extends State<ProductVerificationScreen> {
         Icons.check_circle,
       );
     }
+
+    //check student permision
+    if (studentCode.isEmpty) {
+      _updateFeedback("Please enter a student code.", Colors.red, Icons.cancel);
+      return;
+    }
+
+    bool exists = await _studentCodeExists(studentCode);
+    if (exists) {
+      _updateFeedback("Student code exists.", Colors.green, Icons.check);
+      return;
+    }
+    if (!exists) {
+      _updateFeedback("Student code does not exist.", Colors.red, Icons.cancel);
+      return;
+    }
+
+    // ... continue with product check logic ...
   }
+
+  // void _checkProductPermission() {
+  //   String childId = _childIdController.text.trim();
+
+  //   if (childId.length != 6 || !RegExp(r'^\d{6}$').hasMatch(childId)) {
+  //     _updateFeedback(
+  //       "Please enter a valid 6-digit child ID.",
+  //       Colors.red,
+  //       Icons.cancel,
+  //     );
+  //     return;
+  //   }
+  // }
 
   void _updateFeedback(String message, Color color, IconData icon) {
     if (message != _feedbackMessage) {

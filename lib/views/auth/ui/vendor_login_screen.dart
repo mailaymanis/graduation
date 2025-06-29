@@ -1,21 +1,21 @@
-// ignore_for_file: library_private_types_in_public_api
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:graduation/views/product_verification_screen.dart';
 import 'package:graduation/views/auth/logic/auth_cubit.dart';
 import 'package:graduation/views/auth/logic/auth_states.dart';
-import 'package:graduation/views/home/ui/kidguardhomescreen.dart';
-import 'signup_screen.dart';
+import 'package:graduation/views/auth/ui/vendor_signup_screen.dart';
 
-class LoginScreen extends StatefulWidget {
+class VendorLoginScreen extends StatefulWidget {
   final String userType;
-  const LoginScreen({super.key, required this.userType});
+  const VendorLoginScreen({super.key, required this.userType});
 
   @override
-  _LoginScreenState createState() => _LoginScreenState();
+  // ignore: library_private_types_in_public_api
+  _VendorLoginScreenState createState() => _VendorLoginScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _VendorLoginScreenState extends State<VendorLoginScreen> {
   bool _rememberMe = false;
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final _emailController = TextEditingController();
@@ -34,13 +34,15 @@ class _LoginScreenState extends State<LoginScreen> {
       create: (context) => AuthCubit(),
       child: BlocConsumer<AuthCubit, AuthStates>(
         listener: (context, state) {
-          if (state is LoginSuccessState) {
+          if (state is VendorLoginSuccessState) {
             Navigator.pushReplacement(
               context,
-              MaterialPageRoute(builder: (context) => KidGuardHomeScreen()),
+              MaterialPageRoute(
+                builder: (context) => ProductVerificationScreen(),
+              ),
             );
           }
-          if (state is LoginErrorState) {
+          if (state is VendorLoginErrorState) {
             ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(
                 content: Text(state.message),
@@ -76,7 +78,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       FadeInDown(
                         duration: const Duration(milliseconds: 600),
                         child: const Text(
-                          "Welcome Back",
+                          "Welcome Vendor",
                           style: TextStyle(
                             fontSize: 30,
                             fontWeight: FontWeight.w800,
@@ -180,7 +182,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         ],
                       ),
                       const SizedBox(height: 10),
-                      state is LoginLoadingState
+                      state is VendorLoginLoadingState
                           ? Center(child: const CircularProgressIndicator())
                           : ZoomIn(
                               duration: const Duration(milliseconds: 1000),
@@ -196,7 +198,9 @@ class _LoginScreenState extends State<LoginScreen> {
                                   ),
                                   onPressed: () {
                                     if (_formKey.currentState!.validate()) {
-                                      BlocProvider.of<AuthCubit>(context).login(
+                                      BlocProvider.of<AuthCubit>(
+                                        context,
+                                      ).vendorLogin(
                                         email: _emailController.text,
                                         password: _passwordController.text,
                                       );
@@ -221,8 +225,9 @@ class _LoginScreenState extends State<LoginScreen> {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) =>
-                                      SignUpScreen(userType: widget.userType),
+                                  builder: (context) => VendorSignupScreen(
+                                    userType: widget.userType,
+                                  ),
                                 ),
                               );
                             },

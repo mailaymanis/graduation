@@ -5,6 +5,7 @@ class BudgetSettingScreen extends StatefulWidget {
   const BudgetSettingScreen({super.key});
 
   @override
+  // ignore: library_private_types_in_public_api
   _BudgetSettingScreenState createState() => _BudgetSettingScreenState();
 }
 

@@ -3,18 +3,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:graduation/views/auth/logic/auth_cubit.dart';
 import 'package:graduation/views/auth/logic/auth_states.dart';
-import 'package:graduation/views/child_account_setup_screen.dart';
+import 'package:graduation/views/auth/ui/vendor_login_screen.dart';
 
-class SignUpScreen extends StatefulWidget {
+class VendorSignupScreen extends StatefulWidget {
   final String userType;
 
-  const SignUpScreen({super.key, required this.userType});
+  const VendorSignupScreen({super.key, required this.userType});
 
   @override
-  _SignUpScreenState createState() => _SignUpScreenState();
+  _VendorSignupScreenState createState() => _VendorSignupScreenState();
 }
 
-class _SignUpScreenState extends State<SignUpScreen> {
+class _VendorSignupScreenState extends State<VendorSignupScreen> {
   bool _isPasswordVisible = false;
   final _formKey = GlobalKey<FormState>();
   final TextEditingController _nameController = TextEditingController();
@@ -37,16 +37,16 @@ class _SignUpScreenState extends State<SignUpScreen> {
       create: (context) => AuthCubit(),
       child: BlocConsumer<AuthCubit, AuthStates>(
         listener: (context, state) {
-          if (state is RegisterSuccessState) {
+          if (state is VendorRegisterSuccessState) {
             Navigator.pushReplacement(
               context,
               MaterialPageRoute(
                 builder: (context) =>
-                    ChildAccountSetupScreen(userType: widget.userType),
+                    VendorLoginScreen(userType: widget.userType),
               ),
             );
           }
-          if (state is RegisterErrorState) {
+          if (state is VendorLoginErrorState) {
             ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(
                 content: Text(state.message),
@@ -181,7 +181,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       style: TextStyle(color: Colors.grey),
                     ),
                     const SizedBox(height: 20),
-                    state is RegisterLoadingState
+                    state is VendorLoginLoadingState
                         ? Center(child: const CircularProgressIndicator())
                         : SizedBox(
                             width: double.infinity,
@@ -195,7 +195,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                               ),
                               onPressed: () {
                                 if (_formKey.currentState!.validate()) {
-                                  BlocProvider.of<AuthCubit>(context).register(
+                                  BlocProvider.of<AuthCubit>(
+                                    context,
+                                  ).vendorRegister(
                                     name: _nameController.text,
                                     email: _emailController.text,
                                     phone: _phoneController.text,

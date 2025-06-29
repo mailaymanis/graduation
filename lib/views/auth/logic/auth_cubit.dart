@@ -47,6 +47,43 @@ class AuthCubit extends Cubit<AuthStates> {
     }
   }
 
+  //create vendor login function
+  void vendorLogin({required String email, required String password}) async {
+    emit(VendorLoginLoadingState());
+    try {
+      await client.auth.signInWithPassword(email: email, password: password);
+      log("vendor logged in successfully");
+      emit(VendorLoginSuccessState());
+    } catch (e) {
+      log(e.toString());
+      emit(VendorLoginErrorState(message: e.toString()));
+    }
+  }
+
+  //create vendor register function
+  void vendorRegister({
+    required String name,
+    required String email,
+    required String phone,
+    required String password,
+  }) async {
+    emit(VendorRegisterLoadingState());
+    try {
+      await client.auth.signUp(email: email, password: password);
+      log("vendor registered successfully");
+      await addVendorData(
+        name: name,
+        email: email,
+        phone: phone,
+        password: password,
+      );
+      emit(VendorRegisterSuccessState());
+    } catch (e) {
+      log(e.toString());
+      emit(VendorRegisterErrorState(message: e.toString()));
+    }
+  }
+
   //create child account setup function
   void childAccountSetup({
     required String name,
@@ -110,6 +147,30 @@ class AuthCubit extends Cubit<AuthStates> {
     } catch (e) {
       log(e.toString());
       emit(AddChildDataErrorState(message: e.toString()));
+    }
+  }
+
+  //create add vendor data function
+  Future<void> addVendorData({
+    required String name,
+    required String email,
+    required String phone,
+    required String password,
+  }) async {
+    emit(AddVendorDataLoadingState());
+    try {
+      await client.from("vendor").insert({
+        "vendor_id": client.auth.currentUser!.id,
+        "name": name,
+        "email": email,
+        "phone": phone,
+        "password": password,
+      });
+      log("vendor data added successfully");
+      emit(AddVendorDataSuccessState());
+    } catch (e) {
+      log(e.toString());
+      emit(AddVendorDataErrorState(message: e.toString()));
     }
   }
 }

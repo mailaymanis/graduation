@@ -23,6 +23,26 @@ final class LoginErrorState extends AuthStates {
   LoginErrorState({required this.message});
 }
 
+//create vendor register states
+final class VendorRegisterLoadingState extends AuthStates {}
+
+final class VendorRegisterSuccessState extends AuthStates {}
+
+final class VendorRegisterErrorState extends AuthStates {
+  final String message;
+  VendorRegisterErrorState({required this.message});
+}
+
+//create vendor login states
+final class VendorLoginLoadingState extends AuthStates {}
+
+final class VendorLoginSuccessState extends AuthStates {}
+
+final class VendorLoginErrorState extends AuthStates {
+  final String message;
+  VendorLoginErrorState({required this.message});
+}
+
 //create child account setup states
 final class ChildAccountSetupLoadingState extends AuthStates {}
 
@@ -51,4 +71,14 @@ final class AddChildDataSuccessState extends AuthStates {}
 final class AddChildDataErrorState extends AuthStates {
   final String message;
   AddChildDataErrorState({required this.message});
+}
+
+//create add vendor data states
+final class AddVendorDataLoadingState extends AuthStates {}
+
+final class AddVendorDataSuccessState extends AuthStates {}
+
+final class AddVendorDataErrorState extends AuthStates {
+  final String message;
+  AddVendorDataErrorState({required this.message});
 }
