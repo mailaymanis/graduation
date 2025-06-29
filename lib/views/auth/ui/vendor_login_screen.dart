@@ -1,7 +1,7 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:graduation/views/admin/ui/admin_screen.dart';
+import 'package:graduation/views/admin/ui/admin_login_screen.dart';
 import 'package:graduation/views/product_verification_screen.dart';
 import 'package:graduation/views/auth/logic/auth_cubit.dart';
 import 'package:graduation/views/auth/logic/auth_states.dart';
@@ -248,7 +248,8 @@ class _VendorLoginScreenState extends State<VendorLoginScreen> {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => AdminScreen(),
+                                  builder: (context) =>
+                                      AdminLoginScreen(userType: ""),
                                 ),
                               );
                             },
