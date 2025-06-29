@@ -89,6 +89,7 @@ class AuthCubit extends Cubit<AuthStates> {
     required String name,
     required String email,
     required String age,
+    required String budget,
     required String studentCode,
   }) async {
     emit(ChildAccountSetupLoadingState());
@@ -132,6 +133,7 @@ class AuthCubit extends Cubit<AuthStates> {
     required String email,
     required String studentCode,
     required String age,
+    required String budget,
   }) async {
     emit(AddChildDataLoadingState());
     try {
@@ -141,6 +143,7 @@ class AuthCubit extends Cubit<AuthStates> {
         "email": email,
         "student_code": studentCode,
         "age": age,
+        "budget": budget,
       });
       log("user data added successfully");
       emit(AddChildDataSuccessState());

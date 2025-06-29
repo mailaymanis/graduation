@@ -20,6 +20,7 @@ class _ChildAccountSetupScreenState extends State<ChildAccountSetupScreen> {
   final TextEditingController nameController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController ageController = TextEditingController();
+  final TextEditingController budgetController = TextEditingController();
   final TextEditingController studentCodeController = TextEditingController();
 
   @override
@@ -27,6 +28,7 @@ class _ChildAccountSetupScreenState extends State<ChildAccountSetupScreen> {
     nameController.dispose();
     emailController.dispose();
     ageController.dispose();
+    budgetController.dispose();
     studentCodeController.dispose();
     super.dispose();
   }
@@ -95,6 +97,10 @@ class _ChildAccountSetupScreenState extends State<ChildAccountSetupScreen> {
                       ),
                       BuildTextField(label: "Age", controller: ageController),
                       BuildTextField(
+                        label: "Budget",
+                        controller: budgetController,
+                      ),
+                      BuildTextField(
                         label: "Student Code",
                         controller: studentCodeController,
                       ),
@@ -120,6 +126,7 @@ class _ChildAccountSetupScreenState extends State<ChildAccountSetupScreen> {
                                       name: nameController.text,
                                       email: emailController.text,
                                       age: ageController.text,
+                                      budget: budgetController.text,
                                       studentCode: studentCodeController.text,
                                     );
                                     await context
@@ -130,6 +137,7 @@ class _ChildAccountSetupScreenState extends State<ChildAccountSetupScreen> {
                                           studentCode:
                                               studentCodeController.text,
                                           age: ageController.text,
+                                          budget: budgetController.text,
                                         );
                                   }
                                 },
