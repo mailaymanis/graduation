@@ -1,17 +1,15 @@
 import 'package:flutter/material.dart';
 import 'user_admin_screen.dart';
-import 'notifications_admin_screen.dart';
+import '../../notifications_admin_screen.dart';
 
 class AdminScreen extends StatefulWidget {
   const AdminScreen({super.key});
-
   @override
   State<AdminScreen> createState() => _AdminScreenState();
 }
 
 class _AdminScreenState extends State<AdminScreen> {
   final TextEditingController _budgetController = TextEditingController();
-
   final TextEditingController _academicYearController = TextEditingController();
 
   String? selectedChild;

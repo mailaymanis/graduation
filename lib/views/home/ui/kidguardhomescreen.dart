@@ -1,7 +1,7 @@
 import 'package:animations/animations.dart';
 import 'package:flutter/material.dart';
 import 'package:graduation/views/home/ui/productselectionpage.dart';
-import '../../health_record_screen.dart';
+import '../../health/ui/health_record_screen.dart';
 import '../../notifications_screen.dart';
 import '../../welcome_screen.dart';
 import '../../location_screen.dart';

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'admin_screen.dart';
-import 'user_admin_screen.dart';
+import 'admin/ui/admin_screen.dart';
+import 'admin/ui/user_admin_screen.dart';
 
 class NotificationsScreen extends StatelessWidget {
   const NotificationsScreen({super.key});

@@ -1,6 +1,7 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:graduation/views/admin/ui/admin_screen.dart';
 import 'package:graduation/views/product_verification_screen.dart';
 import 'package:graduation/views/auth/logic/auth_cubit.dart';
 import 'package:graduation/views/auth/logic/auth_states.dart';
@@ -233,6 +234,26 @@ class _VendorLoginScreenState extends State<VendorLoginScreen> {
                             },
                             child: const Text(
                               "New user? Sign Up",
+                              style: TextStyle(fontWeight: FontWeight.bold),
+                            ),
+                          ),
+                        ),
+                      ),
+                      const SizedBox(height: 20),
+                      Center(
+                        child: FadeInUp(
+                          duration: const Duration(milliseconds: 1200),
+                          child: TextButton(
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => AdminScreen(),
+                                ),
+                              );
+                            },
+                            child: const Text(
+                              "Admin",
                               style: TextStyle(fontWeight: FontWeight.bold),
                             ),
                           ),

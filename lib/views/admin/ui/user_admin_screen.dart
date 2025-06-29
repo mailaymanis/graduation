@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'admin_screen.dart';
-import 'edit_user_screen.dart';
-import 'notifications_admin_screen.dart';
+import '../../edit_user_screen.dart';
+import '../../notifications_admin_screen.dart';
 
 class UsersScreen extends StatelessWidget {
   const UsersScreen({super.key});
